@@ -1,0 +1,10 @@
+<?jelly escape-by-default='false'?>
+<j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler">
+    <!--
+     Running the plugin build (or just "gulp" from the command line) will
+     generate a browser bundle of what's in src/main/less/extensions.less and we
+     can load that using an adjunct as follows.
+     See gulpfile.js and see the output from running the "gulp" command.
+    -->
+    <st:adjunct includes="org.jenkins.ui.jsmodules.blueocean-bfa-plugin.extensions"/>
+</j:jelly>

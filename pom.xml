@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>plugin</artifactId>
+        <version>3.43</version>
+    </parent>
+    <name>Blue Ocean Build Failure Analyzer Plugin</name>
+    <artifactId>blueocean-bfa-plugin</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>hpi</packaging>
+    <description>Visualize Build Failure Causes in a Blue Ocean Run Details View</description>
+    <url>https://github.com/stuartrowe/${project.artifactId}</url>
+    <properties>
+        <java.level>8</java.level>
+        <jenkins.version>2.172</jenkins.version>
+        <node.version>6.2.1</node.version>
+        <npm.version>3.10.10</npm.version>
+        <blueocean.version>1.23.0-rc4072.a37f1b47c8f1</blueocean.version>
+        <gitHubRepo>stuartrowe/${project.artifactId}</gitHubRepo>
+    </properties>
+
+    <developers>
+      <developer>
+        <id>stuartr</id>
+        <name>Stuart Rowe</name>
+        <email>stuartr@ea.com</email>
+      </developer>
+    </developers>
+
+    <scm>
+        <connection>scm:git:https://github.com/${gitHubRepo}.git</connection>
+        <developerConnection>scm:git:https://github.com/${gitHubRepo}.git</developerConnection>
+        <url>https://github.com/${gitHubRepo}</url>
+        <tag>${scmTag}</tag>
+    </scm>
+
+    <repositories>
+      <repository>
+        <id>repo.jenkins-ci.org</id>
+        <url>https://repo.jenkins-ci.org/public/</url>
+      </repository>
+      <repository>
+        <id>repo.jenkins-ci.org-incrementals</id>
+        <url>https://repo.jenkins-ci.org/incrementals/</url>
+      </repository>
+    </repositories>
+
+    <pluginRepositories>
+      <pluginRepository>
+        <id>repo.jenkins-ci.org</id>
+        <url>https://repo.jenkins-ci.org/public/</url>
+      </pluginRepository>
+      <pluginRepository>
+        <id>repo.jenkins-ci.org-incrementals</id>
+        <url>https://repo.jenkins-ci.org/incrementals/</url>
+      </pluginRepository>
+    </pluginRepositories>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.sonyericsson.jenkins.plugins.bfa</groupId>
+            <artifactId>build-failure-analyzer</artifactId>
+            <version>2.27.0</version>
+        </dependency>
+        <!--<dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+            <version>1.15</version>
+            <scope>test</scope>
+        </dependency>-->
+        <dependency>
+            <groupId>io.jenkins.blueocean</groupId>
+            <artifactId>blueocean-pipeline-api-impl</artifactId>
+            <version>${blueocean.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.jenkins.blueocean</groupId>
+            <artifactId>blueocean</artifactId>
+            <version>${blueocean.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <!--<dependency>
+            <groupId>joda-time</groupId>
+            <artifactId>joda-time</artifactId>
+            <version>2.10.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.12.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jenkins-ci.plugins</groupId>
+            <artifactId>apache-httpcomponents-client-4-api</artifactId>
+            <version>4.5.13-1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jenkins-ci.plugins</groupId>
+            <artifactId>github-api</artifactId>
+            <version>1.114.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jenkins-ci.plugins</groupId>
+            <artifactId>jackson2-api</artifactId>
+            <version>2.13.0-230.v59243c64b0a5</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jenkins-ci.plugins</groupId>
+            <artifactId>junit</artifactId>
+            <version>1.53</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jenkins-ci.plugins</groupId>
+            <artifactId>matrix-project</artifactId>
+            <version>1.18</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jenkins-ci.plugins</groupId>
+            <artifactId>script-security</artifactId>
+            <version>1.78</version>
+        </dependency>-->
+    </dependencies>
+
+    <build>
+        <plugins>
+            <!-- run upstream dependency fetches for all js plugins -->
+            <plugin>
+                <groupId>io.jenkins.blueocean</groupId>
+                <artifactId>blueocean-maven-plugin</artifactId>
+                <version>0.0.3</version>
+                <executions>
+                    <execution>
+                        <id>upstream-dependencies</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>process-node-dependencies</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>package</id>
+                        <goals>
+                            <goal>package-blueocean-resources</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+        </plugins>
+    </build>
+</project>

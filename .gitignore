@@ -1,0 +1,15 @@
+nb-configuration.xml
+nbactions.xml
+node
+node_modules
+npm-debug.log
+npm-debug.log.*
+target
+work
+.idea
+*.iml
+.classpath
+.factorypath
+.project
+.settings
+.vscode
