@@ -17,7 +17,7 @@
         <jenkins.version>2.172</jenkins.version>
         <node.version>6.2.1</node.version>
         <npm.version>3.10.10</npm.version>
-        <blueocean.version>1.23.0-rc4072.a37f1b47c8f1</blueocean.version>
+        <blueocean.version>1.25.4-rc4288.52063fd5cafb</blueocean.version>
         <gitHubRepo>stuartrowe/${project.artifactId}</gitHubRepo>
     </properties>
 
